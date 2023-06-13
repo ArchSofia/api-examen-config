@@ -5,11 +5,13 @@ spring:
     name: api-catalog
   zipkin:
     baseUrl: http://localhost:9411/
-  datasource:
-    driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/movie-dev
-    username: usr-movie
-    password: pwd-movie
+  data:
+    mongodb:
+      username: usr-catalog-mongo
+      password: pwd-catalog-mongo
+      database: catalog-dev-mongo
+      port: 27017
+      host: localhost
 
   jpa:
     generate-ddl: true
@@ -44,3 +46,37 @@ management:
     web:
       exposure:
         include: "*"
+
+resilience4j:
+  retry:
+    configs:
+      default:
+        max-retry-attempts: 3
+        wait-duration: 1s
+        retry-exceptions:
+          - java.io.IOException
+          - java.net.SocketTimeoutException
+      instances:
+        retryCustomerRegister:
+          base-config: default
+          max-retry-attempts: 5
+          wait-duration: 2s
+          retry-exceptions:
+            - java.net.ConnectException
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        wait-duration-in-open-state: 30s
+        automatic-transition-from-open-to-half-open-enabled: true
+        failure-rate-threshold: 50
+    instances:
+      registerCustomer:
+        base-config: default
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 5
+        wait-duration-in-open-state: 1m
+        failure-rate-threshold: 20
