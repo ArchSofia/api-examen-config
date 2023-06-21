@@ -6,9 +6,9 @@ spring:
     
   data:
     mongodb:
-      username: usr-catalog-mongo
-      password: pwd-catalog-mongo
-      database: catalog-dev-mongo
+      username: usr-movie-mongo
+      password: pwd-movie-mongo
+      database: movie-dev-mongo
       port: 27017
       host: localhost
 
