@@ -20,6 +20,11 @@ spring:
           predicates:
             - Path=/api/v1/movies/**
 
+        - id: api-serie
+          uri: lb://api-serie
+          predicates:
+            - Path=/api/v1/series/**
+
 info:
   app:
     name: ${spring.application.name}
