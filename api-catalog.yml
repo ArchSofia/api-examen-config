@@ -4,27 +4,13 @@ spring:
   application:
     name: api-catalog
     
+  mongodb:
+    embedded:
+      version: 4.0.2
   data:
     mongodb:
-      username: usr-movie-mongo
-      password: pwd-movie-mongo
-      database: movie-dev-mongo
+      database: test
       port: 27017
-      host: localhost
-
-  jpa:
-    generate-ddl: true
-    hibernate:
-      enable_lazy_load_no_trans: true
-      event:
-        merge:
-          entity_copy_observer: allow
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL10Dialect
-        format_sql: true
-    show-sql: false
 
 info:
   application:
