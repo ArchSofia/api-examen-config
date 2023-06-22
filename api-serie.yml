@@ -8,7 +8,7 @@ spring:
       username: usr-movie-mongo
       password: pwd-movie-mongo
       database: movie-dev-mongo
-      port: 27017
+      port: 27018
       host: localhost
      
   rabbitmq:
