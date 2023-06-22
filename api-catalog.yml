@@ -3,13 +3,14 @@ server:
 spring:
   application:
     name: api-catalog
-  mongodb:
-    embedded:
-      version: 4.0.2
-  data:
+
+ data:
     mongodb:
-      database: test
+      username: usr-movie-mongo
+      password: pwd-movie-mongo
+      database: movie-dev-mongo
       port: 27017
+      host: localhost
 
 info:
   application:
