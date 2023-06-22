@@ -1,22 +1,21 @@
 server:
-  port: 0
+  port: ${PORT:${SERVER_PORT:0}}
 spring:
   application:
     name: api-serie
-  data:
-    mongodb:
-      username: usr-movie-mongo
-      password: pwd-movie-mongo
-      database: movie-dev-mongo
-      port: 27018
-      host: localhost
-     
   rabbitmq:
     username: guest
     password: guest
     host: localhost
     port: 5672
-    
+  mongodb:
+    embedded:
+      version: 4.0.2
+  data:
+    mongodb:
+      database: test
+      port: 27017
+     
   zipkin:
     baseUrl: http://localhost:9411/
 
