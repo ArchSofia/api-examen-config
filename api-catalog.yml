@@ -3,8 +3,7 @@ server:
 spring:
   application:
     name: api-catalog
-
- data:
+  data:
     mongodb:
       username: usr-movie-mongo
       password: pwd-movie-mongo
